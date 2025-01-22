@@ -72,12 +72,30 @@
         <button onclick="authenticate()">Login</button>
     </div>
 
-    <div class="video-container">
-        <video autoplay muted playsinline>
-            <source src="vid.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
+   <div class="video-container">
+    <video autoplay muted playsinline id="video-player" controls>
+        <source src="/mnt/data/Vidéo Promotionnelle Agence de Voyages Moderne Minimal Crème.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <button onclick="unmuteVideo()" id="unmute-button" style="display: none;">Unmute</button>
+</div>
+
+<script>
+    const video = document.getElementById('video-player');
+    const unmuteButton = document.getElementById('unmute-button');
+
+    video.addEventListener('play', () => {
+        if (video.muted) {
+            unmuteButton.style.display = 'block';
+        }
+    });
+
+    function unmuteVideo() {
+        video.muted = false;
+        unmuteButton.style.display = 'none';
+    }
+</script>
+
 
     <script>
         function authenticate() {
