@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Playback Platform</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .login-container, .video-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+        .login-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .login-container input {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .login-container button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #1e88e5;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .login-container button:hover {
+            background-color: #1565c0;
+        }
+        .video-container {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1> POUR MES CHÈRS AMIS (DE LA PART DE SAMI) LOGIN </h1>
+        <p>GARDEZ SECRET CE QUE VOUS ALLEZ VOIR !</p>
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button onclick="authenticate()">Login</button>
+    </div>
+
+    <div class="video-container">
+        <video autoplay muted playsinline>
+            <source src="vid.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <script>
+        function authenticate() {
+            // Simulate authentication by checking if inputs are filled
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username && password) {
+                document.querySelector('.login-container').style.display = 'none';
+                document.querySelector('.video-container').style.display = 'flex';
+            } else {
+                alert('Please enter a username and password.');
+            }
+        }
+    </script>
+</body>
+</html>
