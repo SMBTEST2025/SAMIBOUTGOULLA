@@ -97,19 +97,29 @@
 </script>
 
 
-    <script>
-        function authenticate() {
-            // Simulate authentication by checking if inputs are filled
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+<script>
+    function authenticate() {
+        // Simulate authentication
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
 
-            if (username && password) {
-                document.querySelector('.login-container').style.display = 'none';
-                document.querySelector('.video-container').style.display = 'flex';
-            } else {
-                alert('Please enter a username and password.');
-            }
+        if (username && password) {
+            document.querySelector('.login-container').style.display = 'none';
+            document.querySelector('.video-container').style.display = 'flex';
+
+            // Automatically unmute the video after login
+            const video = document.getElementById('video-player');
+            video.muted = false;
+
+            // Start playing the video explicitly to ensure sound works
+            video.play().catch(err => {
+                console.error('Error starting video playback:', err);
+            });
+        } else {
+            alert('Please enter a username and password.');
         }
-    </script>
+    }
+</script>
+
 </body>
 </html>
